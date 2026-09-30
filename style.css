@@ -1,0 +1,46 @@
+:root {
+  --brand: #1f5c3f;
+  --text: #1a1a18;
+  --muted: #5f5f58;
+  --line: #e4e4de;
+  --bg: #f6f6f3;
+  --card: #ffffff;
+}
+@media (prefers-color-scheme: dark) {
+  :root { --text: #ececE6; --muted: #a8a8a0; --line: #33332f; --bg: #141412; --card: #1d1d1a; }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans KR', sans-serif;
+  line-height: 1.7;
+  word-break: keep-all;
+}
+a { color: var(--brand); }
+header { border-bottom: 1px solid var(--line); background: var(--card); }
+header .in { max-width: 760px; margin: 0 auto; padding: 14px 16px; display: flex; align-items: center; gap: 10px; }
+header img { width: 32px; height: 32px; border-radius: 8px; }
+header a.home { font-weight: 900; font-size: 20px; color: var(--brand); text-decoration: none; }
+header nav { margin-left: auto; display: flex; gap: 14px; font-size: 14px; }
+header nav a { color: var(--muted); text-decoration: none; }
+main { max-width: 760px; margin: 0 auto; padding: 24px 16px 48px; }
+h1 { font-size: 26px; margin: 8px 0 4px; }
+h2 { font-size: 18px; margin: 28px 0 8px; }
+p, li { font-size: 15px; }
+.muted { color: var(--muted); font-size: 14px; }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 16px 18px; margin: 12px 0; }
+table { width: 100%; border-collapse: collapse; font-size: 14px; }
+th, td { text-align: left; padding: 8px 6px; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { color: var(--muted); font-weight: 700; white-space: nowrap; }
+.hero { text-align: center; padding: 32px 0 8px; }
+.hero img { width: 112px; height: 112px; border-radius: 26px; }
+.hero h1 { font-size: 34px; color: var(--brand); margin-top: 14px; }
+.hero p { font-size: 18px; color: var(--muted); margin: 0; }
+.soon { display: inline-block; margin-top: 18px; padding: 10px 18px; border-radius: 12px; background: var(--brand); color: #fff; font-weight: 800; }
+.features { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin-top: 28px; }
+.features .card { margin: 0; }
+.features b { display: block; margin-bottom: 4px; }
+footer { border-top: 1px solid var(--line); }
+footer .in { max-width: 760px; margin: 0 auto; padding: 18px 16px 32px; font-size: 12px; color: var(--muted); line-height: 1.8; }
