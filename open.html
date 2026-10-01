@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>버디맨에서 보기</title>
+<meta property="og:title" content="버디맨 · 같이 칠 사람 찾아요">
+<meta property="og:description" content="골프 조인 모집 글이에요. 버디맨 앱에서 확인하고 신청하세요.">
+<meta property="og:image" content="https://birdieman.co.kr/icon.png">
+<link rel="icon" href="favicon.png">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main>
+  <section class="hero">
+    <img src="icon.png" alt="버디맨">
+    <h1 id="title">버디맨에서 여는 중…</h1>
+    <p id="sub">앱이 설치돼 있으면 바로 열려요.</p>
+    <p style="margin-top:20px"><a class="soon" id="open" href="#">버디맨 앱으로 열기</a></p>
+    <div class="card" style="margin-top:24px;text-align:left">
+      <b>앱이 없으신가요?</b>
+      <p>버디맨은 지금 출시 준비 중이에요. 곧 App Store와 Google Play에서 받을 수 있어요.<br>
+      먼저 써 보고 싶으면 <a href="mailto:idolovu@gmail.com?subject=%5B%EB%B2%84%EB%94%94%EB%A7%A8%5D%20%EB%A8%BC%EC%A0%80%20%EC%8D%A8%20%EB%B3%B4%EA%B8%B0">메일로 알려 주세요</a>.</p>
+      <p class="muted">초대 코드를 받으셨다면 가입할 때 입력해 주세요.</p>
+    </div>
+    <p style="margin-top:16px"><a href="index.html">버디맨 알아보기 ›</a></p>
+  </section>
+</main>
+<script>
+  // ?p=모집글 / ?t=골프여행 → birdieman:// 딥링크로 앱 열기
+  (function () {
+    var q = new URLSearchParams(location.search);
+    var id = (q.get('p') || q.get('t') || '').replace(/[^0-9a-f-]/gi, '');
+    var path = q.get('t') ? 'trip/' + id : q.get('p') ? 'post/' + id : '';
+    var link = 'birdieman://' + path;
+    document.getElementById('open').href = link;
+    if (q.get('t')) document.getElementById('title').textContent = '골프여행 동행 모집';
+    else if (q.get('p')) document.getElementById('title').textContent = '골프 조인 모집';
+    if (id) setTimeout(function () { location.href = link; }, 300);
+    setTimeout(function () { document.getElementById('sub').textContent = '앱이 열리지 않으면 아래 버튼을 눌러 주세요.'; }, 2000);
+  })();
+</script>
+</body>
+</html>
