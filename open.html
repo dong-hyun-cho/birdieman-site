@@ -14,8 +14,9 @@
 <main>
   <section class="hero">
     <img src="icon.png" alt="버디맨">
-    <h1 id="title">버디맨에서 여는 중…</h1>
-    <p id="sub">앱이 설치돼 있으면 바로 열려요.</p>
+    <h1 id="title">버디맨</h1>
+    <div id="post" class="card" style="display:none;text-align:left;margin-top:16px"></div>
+    <p id="sub" class="muted"></p>
     <p style="margin-top:20px"><a class="soon" id="open" href="#">버디맨 앱으로 열기</a></p>
     <div class="card" style="margin-top:24px;text-align:left">
       <b>앱이 없으신가요?</b>
@@ -27,17 +28,43 @@
   </section>
 </main>
 <script>
-  // ?p=모집글 / ?t=골프여행 → birdieman:// 딥링크로 앱 열기
+  // ?p=모집글 / ?t=골프여행 : 내용을 바로 보여 주고, 앱이 있으면 birdieman:// 로 열기
   (function () {
+    var SB = 'https://nvflepfckayapvuvjrob.supabase.co/rest/v1/rpc/';
+    var KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im52ZmxlcGZja2F5YXB2dXZqcm9iIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTA2NDgzNjIsImV4cCI6MjEwNjIyNDM2Mn0.Mv2N6Vr3OR8l9UXppyFZ4pkDSLPd_HJWhlXbQcuQ5lU'; // 공개(anon) 키 — 요약 함수만 호출, 개인정보 없음
     var q = new URLSearchParams(location.search);
+    var isTrip = !!q.get('t');
     var id = (q.get('p') || q.get('t') || '').replace(/[^0-9a-f-]/gi, '');
-    var path = q.get('t') ? 'trip/' + id : q.get('p') ? 'post/' + id : '';
-    var link = 'birdieman://' + path;
+    var link = 'birdieman://' + (isTrip ? 'trip/' : 'post/') + id;
     document.getElementById('open').href = link;
-    if (q.get('t')) document.getElementById('title').textContent = '골프여행 동행 모집';
-    else if (q.get('p')) document.getElementById('title').textContent = '골프 조인 모집';
-    if (id) setTimeout(function () { location.href = link; }, 300);
-    setTimeout(function () { document.getElementById('sub').textContent = '앱이 열리지 않으면 아래 버튼을 눌러 주세요.'; }, 2000);
+    var W = '일월화수목금토';
+    var won = function (n) { return Number(n || 0).toLocaleString('ko-KR'); };
+    var esc = function (s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); };
+    function kst(iso) { var d = new Date(new Date(iso).getTime() + 9 * 3600000); return (d.getUTCMonth() + 1) + '/' + d.getUTCDate() + '(' + W[d.getUTCDay()] + ') ' + String(d.getUTCHours()).padStart(2, '0') + ':' + String(d.getUTCMinutes()).padStart(2, '0'); }
+    function show(html, title) { var el = document.getElementById('post'); el.innerHTML = html; el.style.display = 'block'; document.getElementById('title').textContent = title; }
+    if (!id) return;
+    fetch(SB + (isTrip ? 'public_trip_summary' : 'public_post_summary'), { method: 'POST', headers: { apikey: KEY, Authorization: 'Bearer ' + KEY, 'Content-Type': 'application/json' }, body: JSON.stringify({ p_id: id }) })
+      .then(function (r) { return r.json(); })
+      .then(function (rows) {
+        var x = rows && rows[0];
+        if (!x) { document.getElementById('sub').textContent = '찾을 수 없는 글이에요. 마감됐거나 지워졌을 수 있어요.'; return; }
+        var closed = x.status !== 'open' || x.open_slots < 1;
+        if (isTrip) {
+          show('<p style="font-size:20px;font-weight:800;margin:0">✈️ ' + esc(x.destination) + '</p>' +
+            '<p style="margin:6px 0">' + esc(x.start_date) + ' · ' + x.nights + '박 ' + (x.nights + 1) + '일 · ' + x.rounds + '라운드</p>' +
+            '<p style="margin:6px 0"><b>' + (closed ? '모집 마감' : x.open_slots + '자리 남음') + '</b> (' + (x.total_players - x.open_slots) + '/' + x.total_players + ')' + (x.cost_per_person ? ' · 1인 약 ' + won(x.cost_per_person) + '원' : '') + '</p>', '골프여행 동행 모집');
+        } else {
+          show('<p style="font-size:20px;font-weight:800;margin:0">⛳ ' + esc(x.course) + '</p>' +
+            '<p class="muted" style="margin:2px 0 8px">' + esc(x.region) + (x.verified ? ' · ✓예약인증' : '') + '</p>' +
+            '<p style="font-size:18px;margin:6px 0"><b>' + kst(x.starts_at) + '</b></p>' +
+            '<p style="margin:6px 0"><b>' + (closed ? '모집 마감' : x.open_slots + '자리 모집 중') + '</b> (' + (x.total_players - x.open_slots) + '/' + x.total_players + ')</p>' +
+            '<p style="margin:6px 0">1인 ' + won(x.price_per_person) + '원 · ' + (x.caddie === 'no_caddie' ? '노캐디' : '캐디') + ' · ' + (x.transfer_prepay ? '선입 ' + won(x.transfer_amount) + '원' : '선입 없음') + '</p>', '골프 조인 모집');
+        }
+        document.getElementById('sub').textContent = closed ? '' : '신청은 버디맨 앱에서 할 수 있어요.';
+      })
+      .catch(function () {});
+    // 앱이 있으면 바로 열기 시도 (카카오톡 안 브라우저에선 막힐 수 있어 버튼도 둠)
+    setTimeout(function () { location.href = link; }, 600);
   })();
 </script>
 </body>
