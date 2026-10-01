@@ -18,6 +18,7 @@
     <div id="post" class="card" style="display:none;text-align:left;margin-top:16px"></div>
     <p id="sub" class="muted"></p>
     <p style="margin-top:20px"><a class="soon" id="open" href="#">버디맨 앱으로 열기</a></p>
+    <p><a id="ext" href="#" style="display:none;margin-top:8px">앱이 안 열리면: 사파리·크롬에서 열기 ›</a></p>
     <div class="card" style="margin-top:24px;text-align:left">
       <b>앱이 없으신가요?</b>
       <p>버디맨은 지금 출시 준비 중이에요. 곧 App Store와 Google Play에서 받을 수 있어요.<br>
@@ -35,7 +36,14 @@
     var q = new URLSearchParams(location.search);
     var isTrip = !!q.get('t');
     var id = (q.get('p') || q.get('t') || '').replace(/[^0-9a-f-]/gi, '');
-    var link = 'birdieman://' + (isTrip ? 'trip/' : 'post/') + id;
+    // 글 번호가 없으면(예시 링크 등) 앱 첫 화면으로
+    var link = id ? 'birdieman://' + (isTrip ? 'trip/' : 'post/') + id : 'birdieman://';
+    // 카카오톡 안 브라우저는 앱 열기를 막을 때가 있어 → 기본 브라우저(사파리·크롬)로 다시 열기 버튼
+    if (/KAKAOTALK/i.test(navigator.userAgent)) {
+      var ext = document.getElementById('ext');
+      ext.href = 'kakaotalk://web/openExternal?url=' + encodeURIComponent(location.href);
+      ext.style.display = 'inline-block';
+    }
     document.getElementById('open').href = link;
     var W = '일월화수목금토';
     var won = function (n) { return Number(n || 0).toLocaleString('ko-KR'); };
