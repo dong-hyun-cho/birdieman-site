@@ -44,6 +44,13 @@
       ext.href = 'kakaotalk://web/openExternal?url=' + encodeURIComponent(location.href);
       ext.style.display = 'inline-block';
     }
+    // ?s=1234 : 스코어카드 초대 코드 → 앱의 '코드로 스코어카드 참여'
+    var sc = (q.get('s') || '').replace(/[^0-9]/g, '').slice(0, 4);
+    if (sc.length === 4) {
+      link = 'birdieman://score/join?code=' + sc;
+      document.getElementById('title').textContent = '스코어카드 초대 · 코드 ' + sc;
+      document.getElementById('sub').textContent = '앱에서 열면 같은 스코어카드에 내 자리로 참여해요. 앱이 없으면 설치 후 MY › 코드로 스코어카드 참여에 ' + sc + ' 를 넣어 주세요.';
+    }
     document.getElementById('open').href = link;
     var W = '일월화수목금토';
     var won = function (n) { return Number(n || 0).toLocaleString('ko-KR'); };
