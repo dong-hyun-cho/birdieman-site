@@ -18,11 +18,12 @@
     <div id="post" class="card" style="display:none;text-align:left;margin-top:16px"></div>
     <p id="sub" class="muted"></p>
     <p style="margin-top:20px"><a class="soon" id="open" href="#">버디맨 앱으로 열기</a></p>
+    <p><a id="web" href="https://birdieman.co.kr/app/" style="display:inline-block;margin-top:4px;font-weight:700">앱이 없으면: 웹에서 바로 보기 ›</a></p>
     <p><a id="ext" href="#" style="display:none;margin-top:8px">앱이 안 열리면: 사파리·크롬에서 열기 ›</a></p>
     <div class="card" style="margin-top:24px;text-align:left">
       <b>앱이 없으신가요?</b>
-      <p>버디맨은 지금 출시 준비 중이에요. 곧 App Store와 Google Play에서 받을 수 있어요.<br>
-      먼저 써 보고 싶으면 <a href="mailto:idolovu@gmail.com?subject=%5B%EB%B2%84%EB%94%94%EB%A7%A8%5D%20%EB%A8%BC%EC%A0%80%20%EC%8D%A8%20%EB%B3%B4%EA%B8%B0">메일로 알려 주세요</a>.</p>
+      <p>위의 <b>웹에서 바로 보기</b>로 지금 바로 둘러보고 신청할 수 있어요. 앱은 곧 App Store와 Google Play에 나와요.<br>
+      궁금한 점은 <a href="mailto:idolovu@gmail.com?subject=%5B%EB%B2%84%EB%94%94%EB%A7%A8%5D%20%EB%A8%BC%EC%A0%80%20%EC%8D%A8%20%EB%B3%B4%EA%B8%B0">메일로 알려 주세요</a>.</p>
       <p class="muted">초대 코드를 받으셨다면 가입할 때 입력해 주세요.</p>
     </div>
     <p style="margin-top:16px"><a href="index.html">버디맨 알아보기 ›</a></p>
@@ -52,6 +53,8 @@
       document.getElementById('sub').textContent = '앱에서 열면 같은 스코어카드에 내 자리로 참여해요. 앱이 없으면 설치 후 MY › 코드로 스코어카드 참여에 ' + sc + ' 를 넣어 주세요.';
     }
     document.getElementById('open').href = link;
+    // 웹 버전: 같은 글을 웹 앱에서
+    if (id && sc.length !== 4) document.getElementById('web').href = 'https://birdieman.co.kr/app/' + (isTrip ? 'trip/' : 'post/') + id;
     var W = '일월화수목금토';
     var won = function (n) { return Number(n || 0).toLocaleString('ko-KR'); };
     var esc = function (s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); };
@@ -73,18 +76,7 @@
             '<p class="muted" style="margin:2px 0 8px">' + esc(x.region) + (x.verified ? ' · ✓예약인증' : '') + '</p>' +
             '<p style="font-size:18px;margin:6px 0"><b>' + kst(x.starts_at) + '</b></p>' +
             '<p style="margin:6px 0"><b>' + (closed ? '모집 마감' : x.open_slots + '자리 모집 중') + '</b> (' + (x.total_players - x.open_slots) + '/' + x.total_players + ')</p>' +
-            '<p style="margin:6px 0">1인 ' + (x.currency === 'USD' ? ' + (x.caddie === 'no_caddie' ? '노캐디' : '캐디') + ' · ' + (x.transfer_prepay ? '선입 ' + won(x.transfer_amount) + '원' : '선입 없음') + '</p>', '골프 조인 모집');
-        }
-        document.getElementById('sub').textContent = closed ? '' : '신청은 버디맨 앱에서 할 수 있어요.';
-      })
-      .catch(function () {});
-    // 앱이 있으면 바로 열기 시도 (카카오톡 안 브라우저에선 막힐 수 있어 버튼도 둠)
-    setTimeout(function () { location.href = link; }, 600);
-  })();
-</script>
-</body>
-</html>
- + x.price_per_person + ' (약 ' + won(Math.round(x.price_per_person * 1400 / 1000) * 1000) + '원)' : won(x.price_per_person) + '원') + ' · ' + (x.caddie === 'no_caddie' ? '노캐디' : '캐디') + ' · ' + (x.transfer_prepay ? '선입 ' + won(x.transfer_amount) + '원' : '선입 없음') + '</p>', '골프 조인 모집');
+            '<p style="margin:6px 0">1인 ' + (x.currency === 'USD' ? '$' + x.price_per_person + ' (약 ' + won(Math.round(x.price_per_person * 1400 / 1000) * 1000) + '원)' : won(x.price_per_person) + '원') + ' · ' + (x.caddie === 'no_caddie' ? '노캐디' : '캐디') + ' · ' + (x.transfer_prepay ? '선입 ' + won(x.transfer_amount) + '원' : '선입 없음') + '</p>', '골프 조인 모집');
         }
         document.getElementById('sub').textContent = closed ? '' : '신청은 버디맨 앱에서 할 수 있어요.';
       })
