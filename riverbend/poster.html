@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pro Shop Posters · BirdieMan</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="../favicon.png">
+<style>
+  @page { size: A4; margin: 0; }
+  * { box-sizing: border-box; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  body { margin: 0; background: #ddd; font-family: -apple-system, "Segoe UI", Roboto, "Malgun Gothic", sans-serif; }
+  .poster { width: 210mm; height: 297mm; margin: 10mm auto; background: linear-gradient(160deg, #1f5c3f, #2f8f5b); color: #fff; display: flex; flex-direction: column; align-items: center; text-align: center; padding: 20mm 16mm; overflow: hidden; }
+  .poster + .poster { break-before: page; }
+  .brand { display: flex; align-items: center; gap: 12px; font-size: 26px; font-weight: 900; }
+  .brand img { width: 54px; height: 54px; border-radius: 14px; }
+  .kicker { margin-top: 14mm; font-size: 22px; font-weight: 800; color: #ffe08a; letter-spacing: .5px; }
+  h1 { font-size: 60px; line-height: 1.08; margin: 6mm 0 0; letter-spacing: -1px; }
+  .sub { font-size: 23px; margin-top: 6mm; opacity: .95; line-height: 1.45; }
+  .qr { margin-top: 12mm; background: #fff; border-radius: 26px; padding: 10mm; }
+  .qr img { width: 72mm; height: 72mm; display: block; }
+  .scan { margin-top: 6mm; font-size: 26px; font-weight: 900; }
+  .pts { margin-top: auto; display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; }
+  .pts span { background: rgba(255,255,255,.16); border-radius: 999px; padding: 8px 16px; font-size: 18px; font-weight: 700; }
+  .url { margin-top: 6mm; font-size: 18px; opacity: .85; }
+  @media print { body { background: #fff; } .poster { margin: 0; } }
+  @media (max-width: 800px) { .poster { width: 100%; height: auto; min-height: 100vh; margin: 0 0 12px; } h1 { font-size: 40px; } .qr img { width: 60vw; height: 60vw; } }
+</style>
+</head>
+<body>
+
+<div class="poster">
+  <div class="brand"><img src="../icon.png" alt="">BirdieMan</div>
+  <div class="kicker">2026 TURKEY SHOOT · NOV 22</div>
+  <h1>Watch the live leaderboard</h1>
+  <div class="sub">Every team's score, hole by hole, as it happens.<br>Birdie alerts included. No app, no sign-up.</div>
+  <div class="qr"><img src="img/qr-players.png" alt="QR code"></div>
+  <div class="scan">Scan me</div>
+  <div class="pts"><span>Live standings</span><span>Shotgun scramble</span><span>English · 한국어</span></div>
+  <div class="url">River Bend GC · Camp Humphreys</div>
+</div>
+
+<div class="poster">
+  <div class="brand"><img src="../icon.png" alt="">BirdieMan</div>
+  <div class="kicker">FREE GOLF SCORECARD</div>
+  <h1>Keep score on your phone</h1>
+  <div class="sub">River Bend pars &amp; yardages built in.<br>Your foursome sees the same card live. Stats after every round.</div>
+  <div class="qr"><img src="img/qr-app.png" alt="QR code"></div>
+  <div class="scan">Scan to start a round</div>
+  <div class="pts"><span>No sign-up to start</span><span>Side games</span><span>English · 한국어</span></div>
+  <div class="url">birdieman.co.kr/app · iPhone: “BirdieMan” on the App Store</div>
+</div>
+
+</body>
+</html>

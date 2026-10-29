@@ -1,0 +1,51 @@
+/* River Bend pilot pages — screen + print (A4) */
+:root { --g: #1f5c3f; --g2: #2f8f5b; --ink: #1d1f1b; --mute: #62675f; --line: #dfe3dc; --bg: #f6f6f1; --gold: #ffd166; }
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 16px/1.6 -apple-system, "Segoe UI", Roboto, "Malgun Gothic", sans-serif; }
+.wrap { max-width: 860px; margin: 0 auto; padding: 24px 16px 60px; }
+.top { display: flex; align-items: center; gap: 10px; font-weight: 800; color: var(--g); }
+.top img { width: 36px; height: 36px; border-radius: 9px; }
+.top nav { margin-left: auto; display: flex; gap: 12px; font-size: 14px; flex-wrap: wrap; }
+.top nav a { color: var(--g); }
+.hero { background: linear-gradient(150deg, var(--g), var(--g2)); color: #fff; border-radius: 22px; padding: 30px 26px; margin: 18px 0 24px; }
+.hero h1 { margin: 0 0 8px; font-size: 32px; line-height: 1.2; }
+.hero p { margin: 0; opacity: .92; font-size: 17px; }
+.hero .tag { display: inline-block; background: rgba(255,255,255,.16); border-radius: 999px; padding: 3px 12px; font-size: 13px; font-weight: 700; margin-bottom: 12px; }
+h2 { font-size: 23px; margin: 34px 0 12px; color: var(--g); }
+h3 { font-size: 18px; margin: 0 0 6px; }
+.card { background: #fff; border: 1px solid var(--line); border-radius: 16px; padding: 18px 20px; margin: 12px 0; break-inside: avoid; }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 12px; }
+.pain { border-left: 5px solid #d6336c; }
+.fix { border-left: 5px solid var(--g2); }
+.muted { color: var(--mute); }
+.big { font-size: 20px; font-weight: 800; }
+.quote { font-size: 22px; font-weight: 800; color: var(--g); border-left: 5px solid var(--gold); padding: 6px 0 6px 16px; margin: 20px 0; }
+table { width: 100%; border-collapse: collapse; background: #fff; border-radius: 14px; overflow: hidden; }
+th, td { padding: 10px 12px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; font-size: 15px; }
+th { background: #eef3ee; color: var(--g); }
+.step { display: grid; grid-template-columns: 1fr 230px; gap: 18px; align-items: start; background: #fff; border: 1px solid var(--line); border-radius: 16px; padding: 18px 20px; margin: 14px 0; break-inside: avoid; }
+.step .n { display: inline-flex; width: 32px; height: 32px; border-radius: 50%; background: var(--g); color: #fff; font-weight: 800; align-items: center; justify-content: center; margin-right: 8px; }
+.step h3 { display: flex; align-items: center; font-size: 19px; }
+.step img { width: 100%; border-radius: 14px; border: 1px solid var(--line); box-shadow: 0 3px 12px rgba(0,0,0,.08); }
+.tap { display: inline-block; background: #fff3c4; color: #6b4e00; border-radius: 8px; padding: 1px 8px; font-weight: 800; }
+.tip { background: #eef6f0; border-radius: 12px; padding: 10px 14px; margin-top: 10px; font-size: 15px; }
+.shots { display: flex; gap: 12px; flex-wrap: wrap; }
+.shots figure { margin: 0; flex: 1 1 200px; max-width: 260px; }
+.shots img { width: 100%; border-radius: 14px; border: 1px solid var(--line); }
+.shots figcaption { font-size: 13px; color: var(--mute); text-align: center; margin-top: 4px; }
+.flow { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; font-weight: 700; }
+.flow span { background: #fff; border: 1px solid var(--line); border-radius: 999px; padding: 6px 14px; }
+.flow i { color: var(--mute); font-style: normal; }
+.msg { white-space: pre-wrap; background: #fffbe6; border: 1px dashed #e0c95a; border-radius: 12px; padding: 14px; font-size: 15px; }
+.lang { display: inline-block; background: var(--g); color: #fff; border-radius: 8px; padding: 2px 10px; font-size: 13px; font-weight: 800; }
+.pb { break-before: page; }
+@media (max-width: 640px) { .step { grid-template-columns: 1fr; } .step img { max-width: 260px; } .hero h1 { font-size: 26px; } }
+@media print {
+  @page { size: A4; margin: 14mm; }
+  body { background: #fff; font-size: 13px; }
+  .wrap { padding: 0; max-width: none; }
+  .top nav { display: none; }
+  .hero { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .step { grid-template-columns: 1fr 190px; }
+  * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+}
