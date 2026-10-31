@@ -49,9 +49,9 @@
     var sc = (q.get('s') || '').replace(/[^0-9]/g, '').slice(0, 4);
     if (sc.length === 4) {
       link = 'birdieman://score/join?code=' + sc;
-      document.getElementById('title').innerHTML = '스코어카드 초대<div style="margin:14px auto 0;display:inline-block;padding:10px 22px;border-radius:14px;background:#F08C00;color:#fff;font-size:40px;letter-spacing:10px">' + sc + '</div><div style="font-size:14px;font-weight:600;margin-top:6px">참여 코드</div>';
+      document.getElementById('title').innerHTML = '스코어카드 초대<div style="margin:14px auto 0;display:block;width:fit-content;padding:10px 22px;border-radius:14px;background:#F08C00;color:#fff;font-size:40px;letter-spacing:10px">' + sc + '</div><div style="font-size:14px;font-weight:600;margin-top:6px">참여 코드</div>';
       document.getElementById('web').href = 'https://birdieman.co.kr/app/score/join?code=' + sc + (q.get('lang') === 'en' ? '&lang=en' : '');
-      document.getElementById('web').textContent = '앱이 없으면: 웹에서 바로 참여 ›';
+      document.getElementById('web').textContent = '앱이 없으면: 웹에서 바로 참여 ›'; document.getElementById('web').style.cssText = 'display:inline-block;margin-top:8px;padding:12px 20px;border-radius:12px;background:#F08C00;color:#fff;font-weight:800;text-decoration:none';
       document.getElementById('sub').textContent = '앱에서 열면 같은 스코어카드에 내 자리로 참여해요. 앱이 없으면 설치 후 홈 › 코드 참여에 ' + sc + ' 를 넣어 주세요.';
     }
     document.getElementById('open').href = link;
