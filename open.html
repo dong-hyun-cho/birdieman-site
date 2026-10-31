@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>버디맨에서 보기</title>
-<meta property="og:title" content="버디맨 · 같이 칠 사람 찾아요">
-<meta property="og:description" content="골프 조인 모집 글이에요. 버디맨 앱에서 확인하고 신청하세요.">
+<meta property="og:title" content="버디맨 · 골프 스코어카드 초대">
+<meta property="og:description" content="눌러서 같이 스코어를 기록하세요. 앱이 없어도 웹에서 바로 참여할 수 있어요.">
 <meta property="og:image" content="https://birdieman.co.kr/icon.png">
 <link rel="icon" href="favicon.png">
 <link rel="stylesheet" href="style.css?v=2">
@@ -49,8 +49,10 @@
     var sc = (q.get('s') || '').replace(/[^0-9]/g, '').slice(0, 4);
     if (sc.length === 4) {
       link = 'birdieman://score/join?code=' + sc;
-      document.getElementById('title').textContent = '스코어카드 초대 · 코드 ' + sc;
-      document.getElementById('sub').textContent = '앱에서 열면 같은 스코어카드에 내 자리로 참여해요. 앱이 없으면 설치 후 MY › 코드로 스코어카드 참여에 ' + sc + ' 를 넣어 주세요.';
+      document.getElementById('title').innerHTML = '스코어카드 초대<div style="margin:14px auto 0;display:inline-block;padding:10px 22px;border-radius:14px;background:#F08C00;color:#fff;font-size:40px;letter-spacing:10px">' + sc + '</div><div style="font-size:14px;font-weight:600;margin-top:6px">참여 코드</div>';
+      document.getElementById('web').href = 'https://birdieman.co.kr/app/score/join?code=' + sc + (q.get('lang') === 'en' ? '&lang=en' : '');
+      document.getElementById('web').textContent = '앱이 없으면: 웹에서 바로 참여 ›';
+      document.getElementById('sub').textContent = '앱에서 열면 같은 스코어카드에 내 자리로 참여해요. 앱이 없으면 설치 후 홈 › 코드 참여에 ' + sc + ' 를 넣어 주세요.';
     }
     document.getElementById('open').href = link;
     // 웹 버전: 같은 글을 웹 앱에서
