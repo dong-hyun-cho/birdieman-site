@@ -3,19 +3,163 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>버디맨 · 골프 스코어카드 · 월례회 신페리오</title>
-<meta name="description" content="가입 없이 바로 쓰는 골프 스코어카드. 동반자와 한 스코어카드에 같이 기록하고, 동호회 월례회는 링크 하나로 실시간 순위와 신페리오까지 자동 계산해요.">
+<title>버디맨 · 골프 스코어카드 앱 · 월례회 신페리오 자동 계산</title>
+<meta name="description" content="가입 없이 바로 쓰는 무료 골프 스코어카드 앱. 동반자와 한 스코어카드에 같이 기록하고, 아이폰 잠금화면에서 바로 입력해요. 모임 월례회는 링크 하나로 실시간 순위와 신페리오·시상까지 자동 계산.">
+<meta name="keywords" content="골프 스코어카드, 골프 스코어 앱, 골프 기록, 스코어 기록 앱, 신페리오, 신페리오 계산, 월례회, 골프 모임, 골프 동호회, 핸디캡, 골프 대회 운영">
+<link rel="canonical" href="https://birdieman.co.kr/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://birdieman.co.kr/">
+<meta property="og:site_name" content="버디맨">
 <meta property="og:title" content="버디맨 · 골프 스코어카드">
-<meta property="og:description" content="골프친구 찾기부터 스코어 기록까지. 가입 없이 바로 써요.">
-<meta property="og:image" content="https://birdieman.co.kr/icon.png">
+<meta property="og:description" content="가입 없이 바로 쓰는 골프 스코어카드. 월례회는 링크 하나로 실시간 순위·신페리오 자동.">
+<meta property="og:image" content="https://birdieman.co.kr/img/2-scorecard.png">
+<meta name="apple-itunes-app" content="app-id=6817443477">
 <link rel="icon" href="favicon.png">
-<link rel="canonical" href="https://birdieman.co.kr/app/">
-<!-- 소개 페이지 없이 바로 버디맨 웹으로 (주소 뒤 ?·# 은 그대로 넘김) -->
-<meta http-equiv="refresh" content="0; url=/app/">
-<script>location.replace('/app/' + location.search + location.hash);</script>
-<style>body{margin:0;font-family:system-ui,sans-serif;background:#f6f6f3;color:#1a1a18;display:flex;min-height:100vh;align-items:center;justify-content:center}a{color:#1f5c3f;font-weight:800}</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "MobileApplication",
+      "name": "버디맨",
+      "alternateName": "BirdieMan",
+      "operatingSystem": "iOS",
+      "applicationCategory": "SportsApplication",
+      "description": "가입 없이 바로 쓰는 골프 스코어카드. 동반자와 함께 기록, 잠금화면 입력, 월례회 실시간 순위와 신페리오 자동 계산.",
+      "url": "https://birdieman.co.kr/",
+      "downloadUrl": "https://apps.apple.com/kr/app/id6817443477",
+      "inLanguage": "ko",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "KRW" }
+    },
+    {
+      "@type": "WebApplication",
+      "name": "버디맨 웹",
+      "url": "https://birdieman.co.kr/app/",
+      "applicationCategory": "SportsApplication",
+      "browserRequirements": "requires JavaScript",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "KRW" }
+    },
+    {
+      "@type": "Organization",
+      "name": "오프라이 (Oprai)",
+      "url": "https://birdieman.co.kr/",
+      "logo": "https://birdieman.co.kr/icon.png",
+      "email": "hello@birdieman.co.kr",
+      "sameAs": ["https://www.instagram.com/birdieman_golf", "https://www.threads.net/@birdieman_golf"]
+    }
+  ]
+}
+</script>
+<style>
+:root{--brand:#1f5c3f;--soft:#e8f1ec;--text:#1a1a18;--muted:#5f5f58;--line:#e4e4de;--bg:#f6f6f3;--card:#fff}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--soft:#1f2b25;--text:#ececE6;--muted:#a8a8a0;--line:#33332f;--bg:#141412;--card:#1d1d1a}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Noto Sans KR",system-ui,sans-serif;line-height:1.6;word-break:keep-all}
+a{color:var(--brand)}
+.wrap{max-width:960px;margin:0 auto;padding:0 16px}
+header{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
+.logo{display:flex;align-items:center;gap:8px;font-weight:900;font-size:20px;color:var(--brand);text-decoration:none}
+.logo img{width:32px;height:32px;border-radius:8px}
+.hero{padding:40px 0 24px;text-align:center}
+.hero h1{font-size:clamp(28px,6vw,44px);line-height:1.25;margin:0 0 14px}
+.hero p{font-size:18px;color:var(--muted);margin:0 auto 26px;max-width:620px}
+.ctas{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;justify-content:center;height:56px;padding:0 26px;border-radius:14px;font-size:18px;font-weight:900;text-decoration:none}
+.btn.main{background:var(--brand);color:#fff}
+.btn.sub{background:var(--card);color:var(--text);border:1.5px solid var(--line)}
+.small{font-size:14px;color:var(--muted);margin-top:12px}
+.shots{display:flex;gap:12px;overflow-x:auto;padding:18px 0 8px;scroll-snap-type:x mandatory}
+.shots img{height:420px;max-width:80vw;border-radius:18px;scroll-snap-align:center;flex:none;object-fit:contain;background:var(--card)}
+section{padding:28px 0}
+h2{font-size:26px;margin:0 0 16px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px}
+.card h3{margin:0 0 6px;font-size:18px}
+.card p{margin:0;color:var(--muted);font-size:15px}
+.steps{counter-reset:s;list-style:none;padding:0;margin:0;display:grid;gap:10px}
+.steps li{counter-increment:s;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 16px 14px 56px;position:relative}
+.steps li::before{content:counter(s);position:absolute;left:16px;top:14px;width:28px;height:28px;border-radius:50%;background:var(--brand);color:#fff;font-weight:900;display:flex;align-items:center;justify-content:center}
+.faq details{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 16px;margin-bottom:8px}
+.faq summary{font-weight:800;cursor:pointer}
+.faq p{margin:8px 0 0;color:var(--muted)}
+.band{background:var(--soft);border-radius:20px;padding:28px 20px;text-align:center}
+footer{padding:30px 0 40px;color:var(--muted);font-size:14px;text-align:center}
+footer a{color:var(--muted);margin:0 6px}
+</style>
 </head>
 <body>
-<p><a href="/app/">버디맨 열기 ›</a></p>
+<div class="wrap">
+<header>
+  <a class="logo" href="/"><img src="icon.png" alt="">버디맨</a>
+  <a href="/app/" style="font-weight:800">웹에서 열기 ›</a>
+</header>
+
+<main>
+<div class="hero">
+  <h1>골프 스코어카드,<br>가입 없이 바로</h1>
+  <p>동반자와 한 스코어카드에 같이 적고, 모임 월례회는 링크 하나로 실시간 순위와 신페리오까지 자동으로 계산해요.</p>
+  <div class="ctas">
+    <a class="btn main" href="/app/">웹에서 바로 기록</a>
+    <a class="btn sub" href="https://apps.apple.com/kr/app/id6817443477">App Store에서 받기</a>
+  </div>
+  <div class="small">무료 · 아이폰 앱 · 웹(안드로이드·PC)에서도 바로 써요</div>
+</div>
+
+<div class="shots" aria-label="버디맨 화면">
+  <img src="img/2-scorecard.png" alt="버디맨 스코어카드 입력 화면" loading="lazy">
+  <img src="img/3-lockscreen.png" alt="아이폰 잠금화면에서 골프 스코어 입력" loading="lazy">
+  <img src="img/4-awards.png" alt="월례회 신페리오 순위와 시상표" loading="lazy">
+  <img src="img/5-scan.png" alt="골프장 스코어카드 사진을 AI가 읽어 기록" loading="lazy">
+  <img src="img/6-recap.png" alt="라운드 복기와 AI 코치" loading="lazy">
+</div>
+
+<section>
+  <h2>골프 스코어 기록</h2>
+  <div class="grid">
+    <div class="card"><h3>가입 없이 바로 시작</h3><p>골프장만 고르면 홀별 파·거리가 자동으로 들어와요. 날짜는 오늘이 기본이에요.</p></div>
+    <div class="card"><h3>동반자와 한 스코어카드</h3><p>4자리 코드나 카톡 링크로 초대하면 같이 적고, 누가 적어도 모두에게 바로 보여요.</p></div>
+    <div class="card"><h3>잠금화면에서 입력</h3><p>아이폰 잠금화면·다이내믹 아일랜드에서 − · + 로 바로 적어요. 폰을 열 필요가 없어요.</p></div>
+    <div class="card"><h3>종이 스코어카드도 사진 한 장</h3><p>골프장에서 받은 스코어카드를 찍으면 AI가 읽어 기록으로 바꿔요.</p></div>
+    <div class="card"><h3>평균·베스트·핸디캡</h3><p>라운드가 쌓이면 평균 스코어, 베스트, 핸디캡 추정, 홀별 통계를 보여 줘요.</p></div>
+    <div class="card"><h3>복기와 AI 코치</h3><p>어디서 타수를 잃었는지, 다음 라운드에 무엇을 고치면 좋을지 알려 줘요.</p></div>
+  </div>
+</section>
+
+<section>
+  <h2>모임 월례회 · 골프 대회 운영</h2>
+  <ol class="steps">
+    <li><strong>대회 만들기</strong> — 골프장·날짜·방식(스트로크·신페리오·스테이블포드·스크램블)만 고르면 끝</li>
+    <li><strong>조 편성</strong> — 이름만 넣거나 엑셀 조 편성표를 붙여넣기 (60명도 1분)</li>
+    <li><strong>링크 하나로 공유</strong> — 단톡방에 올리면 조마다 한 명이 가입 없이 스코어 입력</li>
+    <li><strong>실시간 순위</strong> — 경기 중에도 순위가 바뀌고, 클럽하우스 TV에도 띄워요</li>
+    <li><strong>시상 자동</strong> — 신페리오 핸디·네트, 메달리스트·니어·롱기, 다버디·다파, 행운상 추첨까지</li>
+  </ol>
+  <p class="small">자세한 방법은 <a href="guide-event.html">대회 운영 가이드</a>에서 볼 수 있어요.</p>
+</section>
+
+<section class="faq">
+  <h2>자주 묻는 질문</h2>
+  <details><summary>정말 무료인가요?</summary><p>스코어 기록, 동반자와 함께 기록, 잠금화면 입력, 대회 참가는 언제나 무료예요. AI 정밀 분석 같은 기능은 프로 요금제(월 3,900원)에서 쓸 수 있어요.</p></details>
+  <details><summary>신페리오 계산은 어떻게 하나요?</summary><p>대회를 마감할 때 숨김홀 12개를 정하면 버디맨이 핸디캡과 네트 스코어, 순위를 자동으로 계산해요.</p></details>
+  <details><summary>안드로이드에서도 쓸 수 있나요?</summary><p>지금은 웹(birdieman.co.kr/app)에서 바로 쓸 수 있어요. 안드로이드 앱도 준비하고 있어요.</p></details>
+  <details><summary>동반자도 앱을 깔아야 하나요?</summary><p>아니요. 링크를 받은 동반자는 앱 없이 웹에서 바로 스코어를 보고 적을 수 있어요.</p></details>
+</section>
+
+<section>
+  <div class="band">
+    <h2>오늘 라운드부터 버디맨으로</h2>
+    <div class="ctas">
+      <a class="btn main" href="/app/">웹에서 바로 기록</a>
+      <a class="btn sub" href="https://apps.apple.com/kr/app/id6817443477">App Store에서 받기</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div><a href="guide-event.html">대회 운영 가이드</a><a href="partner.html">골프장 파트너</a><a href="support.html">고객지원</a><a href="terms.html">이용약관</a><a href="privacy.html">개인정보처리방침</a></div>
+  <div style="margin-top:8px">© 2026 오프라이 · <a href="mailto:hello@birdieman.co.kr">hello@birdieman.co.kr</a></div>
+</footer>
+</div>
 </body>
 </html>
