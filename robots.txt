@@ -1,6 +1,4 @@
 User-agent: *
 Allow: /
-Disallow: /app/
-Allow: /app/$
 
 Sitemap: https://birdieman.co.kr/sitemap.xml
