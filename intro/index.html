@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>버디맨 기능 소개 · 골프 스코어카드 · 월례회 신페리오 · 잠금화면 입력</title>
+<meta name="description" content="버디맨 기능을 실제 화면으로 소개해요. 가입 없이 바로 쓰는 골프 스코어카드, 동반자와 함께 기록, 아이폰 잠금화면 입력, 종이 스코어카드 사진 기록, 라운드 복기, 모임 월례회 실시간 순위·신페리오·시상 자동, 클럽하우스 TV.">
+<link rel="canonical" href="https://birdieman.co.kr/intro/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://birdieman.co.kr/intro/">
+<meta property="og:site_name" content="버디맨">
+<meta property="og:title" content="버디맨 기능 소개 · 골프 스코어카드">
+<meta property="og:description" content="스코어 기록부터 월례회 신페리오·시상까지, 실제 화면으로 보세요.">
+<meta property="og:image" content="https://birdieman.co.kr/intro/img/result.png">
+<meta name="apple-itunes-app" content="app-id=6817443477">
+<link rel="icon" href="/favicon.png">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"MobileApplication","name":"버디맨","alternateName":"BirdieMan","operatingSystem":"iOS, Web","applicationCategory":"SportsApplication","url":"https://birdieman.co.kr/","downloadUrl":"https://apps.apple.com/kr/app/id6817443477","inLanguage":"ko","offers":{"@type":"Offer","price":"0","priceCurrency":"KRW"},
+"featureList":["가입 없이 바로 쓰는 골프 스코어카드","동반자와 한 스코어카드에 함께 기록","아이폰 잠금화면 스코어 입력","종이 스코어카드 사진을 AI가 읽어 기록","라운드 복기와 AI 코치","모임 월례회 실시간 순위","신페리오 핸디캡·네트 자동 계산","다버디·다파·니어·롱기 시상 자동","클럽하우스 TV 리더보드"]}
+</script>
+<style>
+:root{--brand:#1f5c3f;--soft:#e8f1ec;--text:#1a1a18;--muted:#5f5f58;--line:#e4e4de;--bg:#f6f6f3;--card:#fff}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--soft:#1f2b25;--text:#ececE6;--muted:#a8a8a0;--line:#33332f;--bg:#141412;--card:#1d1d1a}}
+:root[data-theme="dark"]{--soft:#1f2b25;--text:#ececE6;--muted:#a8a8a0;--line:#33332f;--bg:#141412;--card:#1d1d1a}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Noto Sans KR",system-ui,sans-serif;line-height:1.6;word-break:keep-all}
+a{color:var(--brand)}
+.wrap{max-width:1040px;margin:0 auto;padding:0 16px}
+header{display:flex;align-items:center;justify-content:space-between;padding:14px 0;gap:12px}
+.logo{display:flex;align-items:center;gap:8px;font-weight:900;font-size:20px;color:var(--brand);text-decoration:none}
+.logo img{width:32px;height:32px;border-radius:8px}
+.top-cta{font-weight:800;text-decoration:none;background:var(--brand);color:#fff;padding:8px 14px;border-radius:10px;white-space:nowrap}
+.hero{padding:36px 0 12px;text-align:center}
+.hero h1{font-size:clamp(28px,6vw,44px);line-height:1.25;margin:0 0 14px}
+.hero p{font-size:18px;color:var(--muted);margin:0 auto 24px;max-width:640px}
+.ctas{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;justify-content:center;height:54px;padding:0 24px;border-radius:14px;font-size:17px;font-weight:900;text-decoration:none}
+.btn.main{background:var(--brand);color:#fff}
+.btn.sub{background:var(--card);color:var(--text);border:1.5px solid var(--line)}
+.toc{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:26px 0 6px}
+.toc a{background:var(--card);border:1px solid var(--line);border-radius:999px;padding:6px 14px;text-decoration:none;color:var(--text);font-weight:700;font-size:14px}
+.group{padding:28px 0 4px}
+.group>h2{font-size:clamp(24px,4.5vw,32px);margin:0 0 4px}
+.group>p{color:var(--muted);margin:0 0 8px}
+.feat{display:grid;grid-template-columns:1fr 300px;gap:32px;align-items:center;padding:28px 0;border-bottom:1px solid var(--line)}
+.feat:nth-of-type(even){grid-template-columns:300px 1fr}
+.feat:nth-of-type(even) .shot{order:-1}
+.feat h3{font-size:22px;margin:0 0 8px}
+.feat p{margin:0 0 10px;color:var(--muted);font-size:16px}
+.feat ul{margin:0;padding-left:20px;color:var(--text)}
+.feat li{margin:4px 0}
+.shot{justify-self:center;width:100%;max-width:300px}
+.shot img{display:block;width:100%;height:auto;border-radius:28px;border:6px solid #1a1a18;box-shadow:0 12px 30px rgba(0,0,0,.12);background:#fff}
+.shot.wide{max-width:none}
+.shot.wide img{border-radius:14px;border-width:4px}
+.feat.widefeat{grid-template-columns:1fr}
+.feat.widefeat .shot{order:0}
+.tag{display:inline-block;font-size:12px;font-weight:800;color:var(--brand);background:var(--soft);border-radius:6px;padding:2px 8px;margin-bottom:8px}
+.band{background:var(--soft);border-radius:20px;padding:28px 20px;text-align:center;margin:36px 0}
+.band h2{margin:0 0 14px}
+footer{padding:20px 0 40px;color:var(--muted);font-size:14px;text-align:center}
+footer a{color:var(--muted);margin:0 6px}
+@media (max-width:720px){
+  .feat,.feat:nth-of-type(even){grid-template-columns:1fr;gap:18px}
+  .feat:nth-of-type(even) .shot{order:0}
+  .shot{max-width:280px}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <a class="logo" href="/"><img src="/icon.png" alt="">버디맨</a>
+  <a class="top-cta" href="/">바로 쓰기</a>
+</header>
+
+<main>
+<div class="hero">
+  <h1>버디맨으로 할 수 있는 것</h1>
+  <p>스코어를 적는 것부터 모임 월례회 시상까지. 실제 화면으로 하나씩 보여 드릴게요. 모두 가입 없이 바로 써 볼 수 있어요.</p>
+  <div class="ctas">
+    <a class="btn main" href="/score/new">지금 스코어 기록 시작</a>
+    <a class="btn sub" href="https://apps.apple.com/kr/app/id6817443477">App Store에서 받기</a>
+  </div>
+  <nav class="toc" aria-label="기능 목록">
+    <a href="#record">스코어 기록</a><a href="#lock">잠금화면 입력</a><a href="#photo">사진으로 기록</a><a href="#result">결과·복기</a><a href="#event">월례회·대회</a><a href="#awards">신페리오·시상</a><a href="#tv">TV 순위</a>
+  </nav>
+</div>
+
+<section class="group" id="record">
+  <h2>골프 스코어 기록</h2>
+  <p>혼자도, 동반자와 함께도. 앱이 없어도 링크로 바로 같이 적어요.</p>
+
+  <div class="feat">
+    <div>
+      <span class="tag">홈</span>
+      <h3>큰 버튼 하나로 시작</h3>
+      <p>홈 화면 맨 위 [라운드 기록 시작]만 누르면 돼요. 사진 기록, 코드 참여, 내 기록, 모임 대회도 아이콘 하나로 바로 가요.</p>
+      <ul><li>평균·베스트·라운드 수가 쌓여요</li><li>이번 달 버디맨 TOP 10 순위</li></ul>
+    </div>
+    <div class="shot"><img src="img/home.png" alt="버디맨 홈 화면: 라운드 기록 시작 버튼과 메뉴 4개" loading="lazy" width="390" height="844"></div>
+  </div>
+
+  <div class="feat">
+    <div>
+      <span class="tag">기록 시작</span>
+      <h3>골프장·날짜·동반자, 10초면 끝</h3>
+      <p>골프장 이름이나 초성으로 찾으면 홀별 파·거리가 자동으로 들어와요. 날짜는 오늘이 기본, 동반자는 이름만 적으면 돼요.</p>
+      <ul><li>해외 골프장도 기록</li><li>동반자가 만든 카드에는 4자리 코드로 참여</li></ul>
+    </div>
+    <div class="shot"><img src="img/new.png" alt="라운드 기록 시작 화면: 골프장, 날짜, 동반자 입력" loading="lazy" width="390" height="844"></div>
+  </div>
+
+  <div class="feat">
+    <div>
+      <span class="tag">홀 입력</span>
+      <h3>버디·파·보기, 한 번 누르면 기록</h3>
+      <p>큰 버튼으로 장갑 낀 손도 잘 눌려요. 동반자 점수도 대신 적을 수 있고, 한 명만 적어도 모두에게 바로 보여요.</p>
+      <ul><li>홀마다 AI 캐디가 내 기록으로 공략 한마디</li><li>"파, 보기" 하고 말로 적기</li><li>퍼팅·티샷·벌타·벙커도 원하면 기록</li></ul>
+    </div>
+    <div class="shot"><img src="img/input.png" alt="홀 입력 화면: 버디·파·보기·더블 큰 버튼과 AI 캐디" loading="lazy" width="390" height="844"></div>
+  </div>
+
+  <div class="feat">
+    <div>
+      <span class="tag">스코어표</span>
+      <h3>종이 스코어카드처럼 한눈에</h3>
+      <p>버디는 동그라미, 보기는 네모. 칸을 누르면 바로 고칠 수 있어요. 비용 나누기와 내기 계산도 여기서.</p>
+    </div>
+    <div class="shot"><img src="img/table.png" alt="스코어표 화면: 18홀 타수와 버디·보기 표시" loading="lazy" width="390" height="844"></div>
+  </div>
+</section>
+
+<section class="group" id="lock">
+  <h2>아이폰 잠금화면에서 입력</h2>
+  <div class="feat">
+    <div>
+      <span class="tag">아이폰 앱</span>
+      <h3>폰을 열지 않고 − · + · 다음</h3>
+      <p>잠금화면과 다이내믹 아일랜드에 지금 홀 스코어가 떠요. 나와 동반자 점수를 차례로 넣고 다음 홀로 넘어가요.</p>
+    </div>
+    <div class="shot"><img src="/img/3-lockscreen.png" alt="아이폰 잠금화면에서 골프 스코어 입력" loading="lazy" width="1080" height="1080" style="border-radius:20px;border-width:0"></div>
+  </div>
+</section>
+
+<section class="group" id="photo">
+  <h2>종이 스코어카드도 사진 한 장</h2>
+  <div class="feat">
+    <div>
+      <span class="tag">AI 사진 읽기</span>
+      <h3>카트에서 받은 스코어카드를 찍으면 끝</h3>
+      <p>종이 스코어카드나 골프장 문자 캡처를 올리면 AI가 홀별 타수를 읽어 기록으로 바꿔요. 테두리를 자동으로 찾아 반듯하게 펴요.</p>
+    </div>
+    <div class="shot"><img src="/img/5-scan.png" alt="종이 골프 스코어카드 사진을 AI가 읽어 기록으로 바꾸는 화면" loading="lazy" width="1080" height="1080" style="border-radius:20px;border-width:0"></div>
+  </div>
+</section>
+
+<section class="group" id="result">
+  <h2>라운드 결과와 복기</h2>
+  <div class="feat">
+    <div>
+      <span class="tag">결과</span>
+      <h3>결과 이미지로 단톡방에 공유</h3>
+      <p>전반·후반, 버디 몇 개, 동반자 순위까지 한 장에. [이미지로 공유]를 누르면 바로 보낼 수 있어요. 동반자는 링크에서 자기 이름을 누르면 그 기록이 자기 것으로 저장돼요.</p>
+    </div>
+    <div class="shot"><img src="img/result.png" alt="라운드 결과 화면: 78타, 전반·후반, 버디, 동반자 순위" loading="lazy" width="390" height="844"></div>
+  </div>
+  <div class="feat">
+    <div>
+      <span class="tag">복기</span>
+      <h3>"그 홀만 아니었으면…"</h3>
+      <p>아까운 홀만 보기였으면 몇 타였는지, 전반·후반 흐름, 베스트 홀을 보여 줘요. AI 코치에게 평가를 받고, 같이 친 멤버와 다음 약속도 잡아요.</p>
+      <ul><li>내기 정산</li><li>이 멤버로 또 치기 · 모임으로 저장</li></ul>
+    </div>
+    <div class="shot"><img src="img/result3.png" alt="라운드 복기 화면: 아까운 홀만 보기였으면 77타" loading="lazy" width="390" height="844"></div>
+  </div>
+</section>
+
+<section class="group" id="event">
+  <h2>모임 월례회 · 골프 대회 운영</h2>
+  <p>총무님의 엑셀 계산을 버디맨이 대신해요. 참가자는 언제나 무료예요.</p>
+  <div class="feat">
+    <div>
+      <span class="tag">조 편성</span>
+      <h3>엑셀 조 편성표를 붙여넣기</h3>
+      <p>이름만 적거나, 엑셀·카톡에 있는 조 편성표를 그대로 붙여넣으면 조가 나뉘어요. 60명도 1분이면 돼요.</p>
+    </div>
+    <div class="shot"><img src="/guide/g3-paste.png" alt="대회 조 편성표 붙여넣기 화면" loading="lazy" width="780" height="1560"></div>
+  </div>
+  <div class="feat">
+    <div>
+      <span class="tag">실시간 순위</span>
+      <h3>링크 하나로 조마다 입력, 순위는 실시간</h3>
+      <p>단톡방에 링크를 올리면 조마다 한 명이 가입 없이 스코어를 적어요. 경기 중에도 순위가 계속 바뀌어요.</p>
+    </div>
+    <div class="shot"><img src="/guide/g8-board.png" alt="월례회 실시간 리더보드 화면" loading="lazy" width="780" height="1560"></div>
+  </div>
+</section>
+
+<section class="group" id="awards">
+  <h2>신페리오 · 시상 자동</h2>
+  <div class="feat">
+    <div>
+      <span class="tag">신페리오</span>
+      <h3>마감하면 신페리오 순위가 바로</h3>
+      <p>숨김홀 12개로 핸디캡과 네트 스코어를 자동으로 계산해요. 메달리스트, 니어, 롱기까지 시상표가 이미지로 나와요.</p>
+    </div>
+    <div class="shot"><img src="/guide/g11-awards.png" alt="신페리오 순위와 시상표 화면" loading="lazy" width="780" height="1560"></div>
+  </div>
+  <div class="feat">
+    <div>
+      <span class="tag">특별상</span>
+      <h3>다버디·다파·다보기, 행운상 추첨까지</h3>
+      <p>특별상도 자동으로 골라요. 행운상은 순위권을 빼고 추첨해요.</p>
+    </div>
+    <div class="shot"><img src="/guide/g12-special.png" alt="다버디 다파 특별상과 행운상 추첨 화면" loading="lazy" width="780" height="1560"></div>
+  </div>
+</section>
+
+<section class="group" id="tv">
+  <h2>클럽하우스 TV에 순위 띄우기</h2>
+  <div class="feat widefeat">
+    <div>
+      <span class="tag">TV 화면</span>
+      <h3>TV·노트북에서 주소만 열면 15초마다 새로고침</h3>
+      <p>식사 자리에서 모두가 같이 순위를 봐요.</p>
+    </div>
+    <div class="shot wide"><img src="/guide/g9-tv.png" alt="클럽하우스 TV용 대회 리더보드" loading="lazy" width="2560" height="1440"></div>
+  </div>
+  <p style="margin-top:12px">대회 운영 방법은 <a href="/guide-event.html">대회 운영 가이드</a>에 자세히 있어요.</p>
+</section>
+
+<div class="band">
+  <h2>오늘 라운드부터 버디맨으로</h2>
+  <div class="ctas">
+    <a class="btn main" href="/score/new">지금 스코어 기록 시작</a>
+    <a class="btn sub" href="https://apps.apple.com/kr/app/id6817443477">App Store에서 받기</a>
+  </div>
+</div>
+</main>
+
+<footer>
+  <div><a href="/guide-event.html">대회 운영 가이드</a><a href="/partner.html">골프장 파트너</a><a href="/support.html">고객지원</a><a href="/terms.html">이용약관</a><a href="/privacy.html">개인정보처리방침</a></div>
+  <div style="margin-top:8px">© 2026 오프라이 · <a href="mailto:hello@birdieman.co.kr">hello@birdieman.co.kr</a></div>
+</footer>
+</div>
+</body>
+</html>
